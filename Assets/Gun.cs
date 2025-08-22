@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
     private LineRenderer lineRenderer;
     private AudioSource audioSource;
 
+    public Transform firePosition;
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -18,9 +20,29 @@ public class Gun : MonoBehaviour
         lineRenderer.positionCount = 2;
     }
 
-    private IEnumerator ShotEffect()
+    private void Update()
     {
-        yield return null;
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(CoShotEffect());
+        }
+    }
+
+    private IEnumerator CoShotEffect()
+    {
+        //Debug.Log("Start");
+        muzzleEffect.Play();
+        shellEffect.Play();
+
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, firePosition.position);
+        Vector3 endPos = firePosition.position + firePosition.forward * 10f;
+        lineRenderer.SetPosition(1, endPos);
+
+        yield return new WaitForSeconds(0.2f);
+
+        //Debug.Log("End");
+        lineRenderer.enabled = false;
     }
 
 }

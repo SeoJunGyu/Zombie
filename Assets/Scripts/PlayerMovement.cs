@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
 
+    Vector3 moveDir;
+
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -26,14 +28,22 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //회전
-        var rotation = Quaternion.Euler(0f, input.Rot * rotateSpeed * Time.deltaTime, 0f); //000에서의 회전
-        rb.MoveRotation(rb.rotation * rotation); //현재 회전량 * 회전하고싶은 회전량
+        //var rotation = Quaternion.Euler(0f, input.Rot * rotateSpeed * Time.deltaTime, 0f); //000에서의 회전
+        //rb.MoveRotation(rb.rotation * rotation); //현재 회전량 * 회전하고싶은 회전량
+
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane GroupPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+        if (GroupPlane.Raycast(cameraRay, out rayLength))
+        {
+            Vector3 pointTolook = cameraRay.GetPoint(rayLength);
+            transform.LookAt(new Vector3(pointTolook.x, transform.position.y, pointTolook.z));
+        }
 
         if (input.Fire)
         {
-            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane GroupPlane = new Plane(Vector3.up, Vector3.zero);
-            float rayLength;
+            cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            GroupPlane = new Plane(Vector3.up, Vector3.zero);
             if (GroupPlane.Raycast(cameraRay, out rayLength))
             {
                 Vector3 pointTolook = cameraRay.GetPoint(rayLength);
@@ -42,8 +52,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //이동
-        var distance = input.Move * moveSpeed * Time.deltaTime; //forward 방향 이동량
-        rb.MovePosition(transform.position + distance * transform.forward);
+        //var distance = input.Move * moveSpeed * Time.deltaTime; //forward 방향 이동량
+        moveDir.x = rb.position.x + (input.Rot * moveSpeed * Time.deltaTime);
+        moveDir.z = rb.position.z + (input.Move * moveSpeed * Time.deltaTime);
+        rb.MovePosition(moveDir);
 
         //애니메이션
         //animator.SetFloat("Move", input.Move);

@@ -694,9 +694,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54b421488d54324fbfb40509f4c865d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: ef2e8707355dc9446acd4fe1102321bb, type: 2}
   muzzleEffect: {fileID: 8547408587867535088}
   shellEffect: {fileID: 4326264942062066291}
   firePosition: {fileID: 4959168996130380}
+  ammoRemain: 0
+  magAmmo: 0
 --- !u!1 &1871168162219632
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,11 @@ public class PlayerShooter : MonoBehaviour
 {
     public static readonly int IdReload = Animator.StringToHash("Reload");
     public Gun gun;
+    private Rigidbody gunRigid;
+    private Collider gunCollider;
+
+    private Vector3 gunInitPosition;
+    private Quaternion gunInitRotation;
 
     private PlayerInput input;
     private Animator animator;
@@ -16,6 +21,27 @@ public class PlayerShooter : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
+
+        gunRigid = gun.GetComponent<Rigidbody>();
+        gunCollider = gun.GetComponent<Collider>();
+        gunInitPosition = gun.transform.localPosition;
+        gunInitRotation = gun.transform.localRotation;
+    }
+
+    private void OnEnable()
+    {
+        gunRigid.isKinematic = true;
+        gunCollider.enabled = false;
+        gun.transform.localPosition = gunInitPosition;
+        gun.transform.localRotation = gunInitRotation;
+    }
+
+    private void OnDisable()
+    {
+        gunRigid.linearVelocity = Vector3.zero;
+        gunRigid.angularVelocity = Vector3.zero;
+        gunRigid.isKinematic = false;
+        gunCollider.enabled = true;
     }
 
     private void Update()

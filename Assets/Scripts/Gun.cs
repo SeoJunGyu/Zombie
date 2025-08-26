@@ -85,7 +85,7 @@ public class Gun : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Fire();
+            //Fire();
         }
     }
 
@@ -194,6 +194,11 @@ public class Gun : MonoBehaviour
         StartCoroutine(CoReloadEffect());
 
         return true;
+    }
+
+    public void AddAmmo(int amount)
+    {
+        ammoRemain = Mathf.Min(ammoRemain + amount, gunData.startAmmoRemain);
     }
 
 }

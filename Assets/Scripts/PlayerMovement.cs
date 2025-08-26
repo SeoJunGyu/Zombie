@@ -2,7 +2,12 @@ using UnityEngine;
 
 public static class Tags
 {
-    private static readonly string PlayerTag = "Player";
+    public static readonly string PlayerTag = "Player";
+}
+
+public static class Triggers
+{
+    public static readonly string dieTrigger = "Die";
 }
 
 public class PlayerMovement : MonoBehaviour

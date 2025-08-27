@@ -10,6 +10,13 @@ public class LivingEntity : MonoBehaviour, IDamagable
 
     public event Action OnDeath; //델리게이트
 
+    public UIManager canvas;
+
+    private void Awake()
+    {
+        canvas = GameObject.FindWithTag("GameController").GetComponent<UIManager>();
+    }
+
     //Enable 함수 가상화
     protected virtual void OnEnable()
     {

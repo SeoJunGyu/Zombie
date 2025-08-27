@@ -19,6 +19,10 @@ public class Item : MonoBehaviour, IItem
     private AudioSource source;
 
     private float rotationSpeed = 60f;
+    public float moveSpeed = 3f;
+    private Vector3 moveDir = Vector3.up;
+    public float moveTop = 0.5f;
+    public float moveBottom = 0f;
 
     private void Awake()
     {
@@ -29,6 +33,17 @@ public class Item : MonoBehaviour, IItem
     private void Update()
     {
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
+
+        if(transform.position.y >= moveTop)
+        {
+            moveDir = Vector3.down;
+        }
+        if(transform.position.y <= moveBottom)
+        {
+            moveDir = Vector3.up;
+        }
+
+        transform.Translate(moveDir * moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

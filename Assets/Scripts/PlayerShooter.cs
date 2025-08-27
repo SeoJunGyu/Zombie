@@ -17,6 +17,8 @@ public class PlayerShooter : MonoBehaviour
     public Transform leftHandMount;
     public Transform rightHandMount;
 
+    public Canvas canvas;
+
     private void Awake()
     {
         input = GetComponent<PlayerInput>();

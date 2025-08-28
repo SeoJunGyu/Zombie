@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 1000
+  canvas: {fileID: 0}
   damageClip: {fileID: 8300000, guid: c3d8accfc053f004ca665a1c8c4a6919, type: 3}
   dieClip: {fileID: 8300000, guid: b86f03005ed394911b43027aeaaedeb7, type: 3}
   bloodEffect: {fileID: 7027639508257738554}
@@ -241,6 +242,8 @@ MonoBehaviour:
   damage: 10
   lastAttackTime: 0
   attackInterval: 0.5
+  zombieRenderer: {fileID: 3194757200368098724}
+  data: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -294,6 +297,12 @@ CapsuleCollider:
   m_Height: 1.49
   m_Direction: 1
   m_Center: {x: 0, y: 0.77, z: 0}
+--- !u!137 &3194757200368098724 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: 6bc76eedb6629574a83870562bc0c4ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 3194757200364885508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7149568930832435892
 PrefabInstance:
   m_ObjectHideFlags: 0

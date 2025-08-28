@@ -39,6 +39,7 @@ public class Zombie : LivingEntity
                     animator.SetTrigger(Triggers.dieTrigger);
                     agent.isStopped = true;
                     zombieCollider.enabled = false;
+                    audioSource.PlayOneShot(dieClip);
                     break;
             }
         }
@@ -61,6 +62,8 @@ public class Zombie : LivingEntity
     public float damage = 10f;
     public float lastAttackTime;
     public float attackInterval = 0.5f;
+
+    public Renderer zombieRenderer;
 
     private void Awake()
     {
@@ -96,6 +99,15 @@ public class Zombie : LivingEntity
         CurrentStatus = Status.Idle;
     }
 
+    public void Setup(ZombieData data)
+    {
+        MaxHealth = data.maxHp;
+        damage = data.damage;
+        agent.speed = data.speed;
+
+        zombieRenderer.material.color = data.skinColor;
+    }
+
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         base.OnDamage(damage, hitPoint, hitNormal);
@@ -110,7 +122,6 @@ public class Zombie : LivingEntity
     {
         base.Die();
         CurrentStatus = Status.Die;
-        audioSource.PlayOneShot(dieClip);
     }
 
     private void UpdateIdle()

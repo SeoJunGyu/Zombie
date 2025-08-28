@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour, IItem
 {
+    private UIManager uiManager;
+
     public enum Types
     {
         Coin,
@@ -28,6 +30,7 @@ public class Item : MonoBehaviour, IItem
     {
         tag = gameObject.tag;
         source = GameObject.FindWithTag(Tags.PlayerTag).GetComponent<AudioSource>();
+        uiManager = GameObject.FindWithTag("GameController").GetComponent<UIManager>();
     }
 
     private void Update()
@@ -72,7 +75,7 @@ public class Item : MonoBehaviour, IItem
                 }
                 break;
             case Types.Coin:
-                Debug.Log("Coin");
+                uiManager.SetUpdateScore(value);
                 break;
         }
         source.PlayOneShot(pickupClip);

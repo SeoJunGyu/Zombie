@@ -67,9 +67,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c21e8e10ce7f044b81ffe506744b5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   itemType: 2
   value: 10
   pickupClip: {fileID: 8300000, guid: 519ad2e4de69341948a938bf2a31e33b, type: 3}
+  moveSpeed: 0.8
+  moveTop: 1
+  moveBottom: 0.3
 --- !u!1001 &5764937808682440967
 PrefabInstance:
   m_ObjectHideFlags: 0

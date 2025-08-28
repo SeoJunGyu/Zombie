@@ -15,31 +15,39 @@ public class UIManager : MonoBehaviour
 
     int score = 0;
 
-    public bool IsGameOver { get; private set; }
-
     private Zombie zombie;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
         gameOver.SetActive(false);
-        IsGameOver = false;
         score = 0;
 
         playerGun = player.GetComponent<PlayerShooter>();
-        player.GetComponent<LivingEntity>().OnDeath += OnPlayerDead;
         
     }
 
-    private void Update()
+    public void OnEnable()
     {
-        UpdateAmmo();
+        //UpdateAmmo(0, 0);
+        SetUpdateScore(0);
+        SetWaveInfo(0, 0);
+        SetActiveGameOverUi(false);
     }
 
-    public void UpdateAmmo()
+    public void UpdateAmmo(int magAmmo, int remainAmmo)
     {
-        string ammo = $"{playerGun.gun.magAmmo}/{playerGun.gun.ammoRemain}";
-        ammoText.text = ammo;
+        ammoText.text = $"{magAmmo}/{remainAmmo}";
+    }
+
+    public void SetUpdateScore(int score)
+    {
+        scoreText.text = $"Score: {this.score += score}";
+    }
+
+    public void SetWaveInfo(int wave, int count)
+    {
+        waveText.text = $"Wave:{wave}\nEnemy Left: {count}";
     }
 
     public void RestartScene()
@@ -47,9 +55,8 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OnPlayerDead()
+    public void SetActiveGameOverUi(bool active)
     {
-        IsGameOver = true;
-        gameOver.SetActive(true);
+        gameOver.SetActive(active);
     }
 }

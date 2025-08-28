@@ -18,15 +18,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 978776c6b3edc164ba82de2b742a4fbe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 978776c6b3edc164ba82de2b742a4fbe, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 978776c6b3edc164ba82de2b742a4fbe, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 978776c6b3edc164ba82de2b742a4fbe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -122,4 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c21e8e10ce7f044b81ffe506744b5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 2696544765775006669, guid: 63226789a2ac34fec8493b064c47bd44,
+    type: 3}
+  itemType: 1
+  value: 10
   pickupClip: {fileID: 8300000, guid: 519ad2e4de69341948a938bf2a31e33b, type: 3}
+  moveSpeed: 0.5
+  moveTop: 1
+  moveBottom: 0.5

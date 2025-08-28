@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4701262881481600}
+  - component: {fileID: 3535582128157931703}
   m_Layer: 0
   m_Name: Spawn Points
   m_TagString: Untagged
@@ -128,6 +129,30 @@ Transform:
   - {fileID: 4984717578414758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3535582128157931703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738932568335938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5062ae67bb47a4492de465adb49a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 2696544765775006669, guid: 63226789a2ac34fec8493b064c47bd44,
+    type: 3}
+  prefab: {fileID: 6555934215058296617, guid: c5dfab433ec66e04aa8ab71ddb66f508, type: 3}
+  zombieDatas:
+  - {fileID: 11400000, guid: 2cfb850cafb0baf4f912a52c7375427c, type: 2}
+  - {fileID: 11400000, guid: 85dfa1bc5dfe8e549a2ad9e0884b1796, type: 2}
+  - {fileID: 11400000, guid: 5e96e527831d1ce48a2382da038f5ce3, type: 2}
+  spawnPoints:
+  - {fileID: 4786794668291628}
+  - {fileID: 4008875457194926}
+  - {fileID: 4821426734562698}
+  - {fileID: 4984717578414758}
 --- !u!1 &1825065516638574
 GameObject:
   m_ObjectHideFlags: 0
